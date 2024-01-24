@@ -15,8 +15,8 @@ public class OpenapiGeneratorJavaWiremockDemoApplication {
 		WebClient client = ApiClient.buildWebClientBuilder()
 				.build();
 
-		MailClient api = new MailClientAlamano(args[0], client);
-		// MailClient api = new MailClientGeneratedAdapter(args[0], client);
+		// MailClient api = new MailClientAlamano(args[0], client);
+		MailClient api = new MailClientGeneratedAdapter(args[0], client);
 		NewMail newMail = new NewMail();
 		newMail.setRecipient(args[1]);
 		newMail.setBody(args[2]);
