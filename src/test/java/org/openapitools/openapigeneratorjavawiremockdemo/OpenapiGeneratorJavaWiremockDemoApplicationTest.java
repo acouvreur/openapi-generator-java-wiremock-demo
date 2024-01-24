@@ -48,15 +48,7 @@ class OpenapiGeneratorJavaWiremockDemoApplicationTest {
             "body" : "Hello Jug!",
             "status" : "sent"
         }""";
-        stubFor(post(urlPathEqualTo("/mails"))
-                .withHeader("Accept", havingExactly("application/json"))
-                .withHeader("Content-Type", havingExactly("application/json"))
-                .withRequestBody(equalToJson(payload))
-                .willReturn(aResponse()
-                        .withStatus(201)
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(response)
-        ));
+        stubFor(DefaultApiMockServer.stubPostMail201(payload, response));
 
         OpenapiGeneratorJavaWiremockDemoApplication.main(args);
 
