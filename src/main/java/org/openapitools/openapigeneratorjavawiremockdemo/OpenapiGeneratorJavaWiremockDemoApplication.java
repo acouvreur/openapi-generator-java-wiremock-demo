@@ -13,6 +13,7 @@ public class OpenapiGeneratorJavaWiremockDemoApplication {
 
 	public static void main(String[] args) {
 		WebClient client = ApiClient.buildWebClientBuilder()
+				.filter((request, next) -> next.exchange(withBearerToken(request, args[3])))
 				.build();
 
 		// MailClient api = new MailClientAlamano(args[0], client);
@@ -30,5 +31,11 @@ public class OpenapiGeneratorJavaWiremockDemoApplication {
 			System.err.println("Reason: " + e.getResponseBodyAsString());
 			System.err.println("Response headers: " + e.getHeaders());
 		}
+	}
+
+	private static ClientRequest withBearerToken(ClientRequest request, String token) {
+		return ClientRequest.from(request)
+				.header("Authorization", token)
+				.build();
 	}
 }

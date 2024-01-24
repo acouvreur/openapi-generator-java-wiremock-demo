@@ -35,7 +35,7 @@ class OpenapiGeneratorJavaWiremockDemoApplicationTest {
 
     @Test
     void happyPath(WireMockRuntimeInfo wm) {
-        String[] args = new String[]{wm.getHttpBaseUrl(), "jug@example.org", "Hello Jug!"};
+        String[] args = new String[]{wm.getHttpBaseUrl(), "jug@example.org", "Hello Jug!", "mytoken"};
         var payload = """
         {
             "recipient": "jug@example.org",
